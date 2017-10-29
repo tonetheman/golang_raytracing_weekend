@@ -3,6 +3,8 @@ package main
 import "fmt"
 import "math"
 
+type float float64
+
 type vec struct {
   e [3]float64
 }
@@ -20,6 +22,34 @@ func (v* vec) make_unit_vector() {
   v.e[0] *= k
   v.e[1] *= k
   v.e[2] *= k
+}
+
+func add(v1 vec, v2 vec) vec {
+  return vec{[3]float64 {
+    v1.e[0] + v2.e[0],v1.e[1] + v2.e[1],
+    v1.e[2] + v2.e[2]}}
+}
+
+func sub(v1 vec, v2 vec) vec {
+  return vec{[3]float64 {
+    v1.e[0] - v2.e[0],v1.e[1] - v2.e[1],
+    v1.e[2] - v2.e[2]}}
+}
+
+func mul(v1, v2 vec) vec {
+  return vec{[3]float64 {
+    v1.e[0] * v2.e[0],v1.e[1] * v2.e[1],
+    v1.e[2] * v2.e[2]}}
+}
+
+func div(v1, v2 vec) vec {
+  return vec{[3]float64 {
+    v1.e[0] / v2.e[0],v1.e[1] / v2.e[1],
+    v1.e[2] / v2.e[2]}}
+}
+
+func const_mul(t float64, v vec) vec {
+    return vec{[3]float64{t*v.e[0],t*v.e[1],t*v.e[2]}}
 }
 
 func main() {
